@@ -1,0 +1,11 @@
+// Fonts Google (Poppins, Roboto)
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Roboto:wght@400;500;700&display=swap');
+
+// Redefinición de varaibles para sobreescribir valores
+@import "base/variables";
+
+
+@import "base/utility_styles";
+
+// Importar BootStrap 
+@import "bootstrap/scss/bootstrap";

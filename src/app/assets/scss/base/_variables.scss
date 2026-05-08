@@ -1,0 +1,152 @@
+// ---------- VARIABLES FIGMA ----------
+
+/* --- Typography --- */
+$font-title: 'Poppins', sans-serif;
+$font-text: 'Roboto', sans-serif;
+
+/* --- Color palette --- */
+$primary-base: #9DB4C0FF;
+$primary-dark: #6A8DA0FF;
+$primary-light: #E6ECEFFF;
+
+$accent-base: #F5CC5CFF;
+$accent-light: #FDF3D8FF;
+$accent-dark: #F0B719FF;
+
+$neutral-0: #FFFFFFFF;
+$neutral-50: #F5F5F5FF;
+$neutral-100: #EBEBEBFF;
+$neutral-200: #E0E0E0FF;
+$neutral-500: #333533FF;
+$neutral-700: #242423FF;
+$neutral-900: #151514FF;
+
+$success-base: #739685FF;
+$success-light: #E8EDEBFF;
+$success-dark: #A2B9ADFF;
+
+
+$error: #EF4444FF;
+
+$primary-base-hover: #B0C6D2FF;
+$accent-light-hover: #FAEECFFF;
+
+
+
+/* --- Sizes --- */
+// 1rem = 16px
+$size1: 3rem;       // 48px
+$size2: 2.25rem;    // 36px
+$size3: 2rem;       // 32px
+$size4: 1.5rem;     // 24px
+$size5: 1.25rem;    // 20px
+$size6: 1.125rem;   // 18px
+$size7: 1rem;       // 16px (standard)
+$size8: 0.875rem;   // 14px
+$size9: 0.75rem;    // 12px
+$size10: 0.625rem;  // 10px
+
+/* --- Font weight --- */
+$bold: 700;
+$medium: 500;
+$regular: 400;
+
+
+
+// ---------- BOOTSTRAP MAPPING ----------
+
+
+
+// --- Colors ---
+
+$primary:       $primary-base;  
+$secondary:     $accent-base;
+$success:       $success-base;  
+$info:          $primary-light;  
+$warning:       $accent-dark;    
+$danger:        $error;     
+$light:         $neutral-50;     // Bg light
+$dark:          $neutral-900;    // Text or bg dark
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark,
+
+  // --- GRISES PERSONALIZADOS (200 al 700) ---
+  "gray-100":   $neutral-100, // gris muy claro
+  "gray-200":   $neutral-200, // gris claro
+  "gray-300":   $neutral-200, // (Relleno con 200 al no tener variable 300)
+  "gray-400":   $neutral-500, // (Relleno con 500 al no tener variable 400)
+  "gray-500":   $neutral-500, // gris medio
+  "gray-600":   $neutral-500, // (Relleno con 500)
+  "gray-700":   $neutral-700  // gris oscuro (títulos)
+);
+
+// CON EL MAPEO DE GRISES CREAMOS LAS SIGUIENTES CLASES:
+// .bg-gray-200  ---- .text-gray-200  ----- .border-gray-200 
+
+
+
+// --- Global typography ---
+
+$font-family-sans-serif:  $font-text;
+$headings-font-family:    $font-title;
+$font-weight-base:        $regular;
+$headings-font-weight:    $bold;
+$headings-color:          $neutral-700;
+
+
+// --- Tamaño base ---
+$font-size-base: $size7;
+
+
+// --- Tamaño encabezados ---
+$h1-font-size: $size1;
+$h2-font-size: $size2;
+$h3-font-size: $size3;
+$h4-font-size: $size4;
+$h5-font-size: $size5;
+$h6-font-size: $size6;
+
+// --- Tamaño etiqueta small ---
+$small-font-size: $size8;
+
+// --- Mapa de clases .fs-
+$font-sizes: (
+  1: $size1,
+  2: $size2,
+  3: $size3,
+  4: $size4,
+  5: $size5,
+  6: $size6,
+  7: $size7,
+  8: $size8,
+  9: $size9,
+  10: $size10
+);
+
+
+// --- Layout and body ---
+
+$body-bg: $neutral-50; // bg light
+$body-color: $neutral-900; // color text
+
+
+// LAS NECESITAREMOS MÁS ADELANTE, PERO NO SON VALORES DEFINITIVOS:
+
+// --- Components ---
+//$border-radius:       0.5rem;
+//$border-radius-lg:    0.75rem;   
+//$border-radius-sm:    0.25rem;
+
+
+// --- Links ---
+//$link-color:            $primary;
+//$link-decoration:       none;
+//$link-hover-color:      $primary-dark;

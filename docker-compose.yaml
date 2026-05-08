@@ -1,0 +1,13 @@
+services:
+  front-proxy:
+    build: .
+    ports:
+      - '80:80'
+    volumes:
+      - ../FENIX-BACK/FenixTech-BackEnd/uploads:/usr/share/nginx/html/uploads:ro
+    networks:
+      - fenix_network
+networks:
+  fenix_network:
+    external: true
+    name: fenix_network

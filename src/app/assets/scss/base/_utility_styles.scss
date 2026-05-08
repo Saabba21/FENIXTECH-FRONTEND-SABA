@@ -1,0 +1,36 @@
+// Usar para estilizar textos sin usar el color accent (no recomendado para textos largos)
+.text-primary-dark {
+    color: $primary-dark;
+}
+
+// --- AVATARES ---
+.avatar {
+    // 3rem = 48px
+    width: 3rem;
+    height: 3rem;
+    
+    // variantes de tamaño
+    &.avatar-sm {
+        width: 2rem;  // 32px
+        height: 2rem;
+    }
+    
+    &.avatar-lg {
+        width: 4rem;  // 64px
+        height: 4rem;
+    }
+}
+
+// --- ICONOS ---
+.icon-circle-sm {
+     width: 2.5rem; // 40px
+     height: 2.5rem;
+     display: inline-flex !important;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+
+     i {
+        line-height: 1; 
+    }
+}
