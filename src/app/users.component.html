@@ -1,0 +1,46 @@
+<div class="row g-4 mb-4">
+  <div class="col-12 d-flex justify-content-between align-items-center">
+    <h2 class="fw-bold m-0">Gestión de Usuarios</h2>
+  </div>
+</div>
+
+<div class="p-4 border rounded shadow-sm bg-light mb-4">
+  <div class="row g-3 align-items-end">
+    <div class="col-md-5">
+      <label class="form-label fw-medium">Buscar Usuario</label>
+      <div class="input-group">
+        <input type="text" class="form-control border-black bg-white" placeholder="Nombre o email...">
+        <button class="btn btn-primary px-3" title="Buscar"><i class="bi bi-search"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="table-responsive bg-white border rounded shadow-sm p-3">
+  <table class="table table-hover align-middle">
+    <thead class="table-light">
+      <tr>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Rol</th>
+        <th>Estado</th>
+        <th class="text-end">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="fw-medium">Juan Pérez</td>
+        <td>juan@ejemplo.com</td>
+        <td><span class="badge bg-secondary">User</span></td>
+        <td><span class="badge bg-success">Activo</span></td>
+        <td class="text-end">
+          <!-- Toggle para Activar/Desactivar -->
+          <button class="btn btn-sm btn-outline-danger me-2" title="Desactivar">
+            <i class="bi bi-person-fill-slash"></i> Desactivar
+          </button>
+        </td>
+      </tr>
+      <!-- Más filas estáticas... -->
+    </tbody>
+  </table>
+</div>

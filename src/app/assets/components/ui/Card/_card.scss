@@ -1,0 +1,252 @@
+// CARD BASE
+.card {
+  background: $neutral-0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+  }
+}
+
+.card-img-top {
+  height: 180px;
+  object-fit: contain;
+  padding: 10px;
+}
+
+// CARD INFO
+.card-info {
+  border: 1px solid $neutral-200;
+  border-radius: 12px;
+  box-shadow: none;
+
+  // Anula el efecto hover de la clase base
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+// CARD IMPACTO AMBIENTAL
+.card-impact {
+  background-color: $success-light;
+  border-radius: 8px;
+  box-shadow: none;
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  i {
+    color: $success-base;
+  }
+}
+
+.card-no-hover {
+  &:hover {
+    transform: none !important; /* El !important asegura que le gane a la regla base */
+  }
+}
+
+// CARD REVIEW
+.review-card {
+  border-radius: 15px;
+  border: 1px solid $neutral-0;
+
+  &:hover {
+    transform: none;
+  }
+
+  .review-avatar {
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+  .review-stars {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    color: $accent-base;
+  }
+
+  .review-text {
+    font-size: $size10;
+    color: $neutral-900;
+    margin-bottom: 0;
+  }
+}
+
+// CARD PUBLICACIÓN BASE
+.publication-card {
+  border-radius: 15px;
+  background-color: $neutral-0;
+  border: none;
+  padding: 10px 10px 30px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
+
+  .publication-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  .publication-img-full {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .publication-comments-section {
+    border-top: 1px solid $neutral-100;
+    margin-top: 1rem;
+    padding-top: 1rem;
+
+    .comment-item {
+      font-size: 0.85rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+
+      .comment-author {
+        font-weight: 700;
+        color: $neutral-900;
+        margin-right: 0.4rem;
+      }
+
+      .comment-text {
+        color: $neutral-700;
+      }
+    }
+  }
+}
+
+// CARD PUBLICACIÓN FEED (VISTA TODOS LOS POSTS)
+.feed-container {
+  width: 100%;
+  max-width: 750px;
+}
+
+// POP-UP DE COMENTARIOS
+.modal-overlay-bg {
+  background-color: rgba(36, 36, 35, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.comments-modal-content {
+  border-radius: 16px;
+  border: none;
+}
+
+.modal-body .ratio {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+
+// ---- CARD EMPRESAS RANKING ----
+$primer-puesto: #fcd34d;
+$segundo-puesto: #94a3b8;
+$tercer-puesto: #b45309;
+
+.container-cards {
+  max-width: 60rem;
+  margin: 0 auto;
+}
+
+.card-empresa {
+  border-radius: 20px;
+  width: 100%;
+  max-width: 22rem;
+  background: $neutral-0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 4px 0 $neutral-700;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 4px 0 $neutral-700;
+  }
+
+  &.rank-1 {
+    border: 2px solid $primer-puesto;
+    border-top: 10px solid $primer-puesto;
+
+    .img-container { border: 3px solid $primer-puesto; }
+  }
+
+  &.rank-2 {
+    border: 2px solid $segundo-puesto;
+    border-top: 10px solid $segundo-puesto;
+
+    .img-container { border: 3px solid $segundo-puesto; }
+  }
+
+  &.rank-3 {
+    border: 2px solid $tercer-puesto;
+    border-top: 10px solid $tercer-puesto;
+
+    .img-container { border: 3px solid $tercer-puesto; }
+  }
+}
+
+.img-container {
+  overflow: hidden;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+
+  img { object-fit: cover; }
+}
+
+.button-empresas {
+  width: 90%;
+}
+
+.ranking-container {
+  .card-empresa-small {
+    border: 1px solid transparent;
+    background-color: $neutral-0;
+    max-width: 600px;
+
+    .img-container {
+      width: 70px;
+      height: 70px;
+      margin: 0;
+    }
+
+    .border-img {
+      border: 2px solid transparent;
+      object-fit: cover;
+    }
+
+    &.rank-1 {
+      border-color: $primer-puesto;
+      .border-img { border-color: $primer-puesto; }
+    }
+
+    &.rank-2 {
+      border-color: $segundo-puesto;
+      .border-img { border-color: $segundo-puesto; }
+    }
+
+    &.rank-3 {
+      border-color: $tercer-puesto;
+      .border-img { border-color: $tercer-puesto; }
+    }
+
+    .x-small {
+      font-size: $size9;
+      color: $neutral-500;
+    }
+  }
+}

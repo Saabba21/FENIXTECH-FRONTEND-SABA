@@ -1,0 +1,45 @@
+<div class="row g-4 mb-4">
+  <div class="col-12">
+    <h2 class="fw-bold m-0">Centro de Moderación</h2>
+    <p class="text-muted">Modera el contenido creado por los usuarios en la plataforma.</p>
+  </div>
+</div>
+
+<div class="p-4 border rounded shadow-sm bg-light">
+  <ul class="nav nav-pills mb-4 gap-2" id="moderationTabs" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active fw-medium" data-bs-toggle="pill" data-bs-target="#productos" type="button">Productos</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link fw-medium" data-bs-toggle="pill" data-bs-target="#posts" type="button">Posts</button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link fw-medium" data-bs-toggle="pill" data-bs-target="#comentarios" type="button">Comentarios</button>
+    </li>
+  </ul>
+
+  <div class="tab-content" id="moderationTabsContent">
+    <div class="tab-pane fade show active" id="productos" role="tabpanel">
+      <table class="table bg-white border rounded align-middle">
+        <thead class="table-light">
+          <tr>
+            <th>Producto / Título</th>
+            <th>Autor</th>
+            <th>Fecha</th>
+            <th class="text-end">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="fw-medium">RTX 3060 Usada</td>
+            <td>usuario123</td>
+            <td>10/10/2023</td>
+            <td class="text-end">
+              <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

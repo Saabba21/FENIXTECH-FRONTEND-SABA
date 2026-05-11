@@ -1,0 +1,22 @@
+<div class="container-fluid p-0">
+  <div class="d-flex flex-column align-items-center justify-content-center bg-light" style="min-height: 100vh;">
+    <div class="p-4 border rounded shadow-sm bg-white" style="width: 100%; max-width: 450px;">
+      <div class="text-center mb-4">
+        <i class="bi bi-person-badge-fill display-4 text-primary"></i>
+        <h2 class="fw-bold mt-2">FenixTech Admin</h2>
+        <p class="text-muted">Ingresa tus credenciales de administrador</p>
+      </div>
+      <form (submit)="onLogin($event)">
+        <div class="mb-3">
+          <label class="form-label fw-medium">Correo Electrónico</label>
+          <input type="email" class="form-control border-black bg-white" placeholder="admin@fenixtech.com" required>
+        </div>
+        <div class="mb-4">
+          <label class="form-label fw-medium">Contraseña</label>
+          <input type="password" class="form-control border-black bg-white" placeholder="********" required>
+        </div>
+        <button type="submit" class="btn btn-primary p-3 fw-medium w-100">Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+</div>

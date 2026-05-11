@@ -1,0 +1,77 @@
+//scss/components/_buttons.scss
+
+// ----- BUTTON PRIMARY -----
+
+.btn-primary {
+
+    // State normal
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 48px;
+    min-width: 128px;
+    padding: 7px 24px;
+    
+
+    background-color: $neutral-500;
+    color: $neutral-0;
+    border: none;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+    padding: 7px;
+    border-radius: 10px;
+
+    transition: all 0.3s ease;
+
+    // State hover
+
+    &:hover, &:focus, &:active {
+        background-color: $primary-dark;
+        color: $neutral-0;
+        border: none;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+
+        transition: all 0.3s ease;
+    }
+}
+
+
+// ----- BUTTON SECUNDARY -----
+
+.btn-secondary {
+
+    // State normal
+        background-color: $accent-dark;
+        color: $neutral-0;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+
+        transition: all 0.3s ease;
+        border: none;
+
+    // State hover
+
+    &:hover, &:focus, &:active{
+        background-color: $neutral-500;
+        color: $neutral-0;
+        border: none;
+        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+
+        transition: all 0.3s ease;
+    }
+
+    
+}
+
+.btn-xs {
+    min-height: 32px !important; 
+    min-width: auto !important;
+    
+    padding: 4px 12px !important;
+    font-size: 0.85rem !important;
+    border-radius: 6px !important;
+
+    // Obligamos al icono a encogerse también
+    i {
+        font-size: 0.9rem;
+        line-height: 1;
+    }
+}
