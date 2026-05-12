@@ -9,8 +9,8 @@
     <div class="col-md-5">
       <label class="form-label fw-medium">Buscar Usuario</label>
       <div class="input-group">
-        <input type="text" class="form-control border-black bg-white" placeholder="Nombre o email...">
-        <button class="btn btn-primary px-3" title="Buscar"><i class="bi bi-search"></i></button>
+        <input type="text" class="form-control border-black bg-white" placeholder="Nombre o email..." [(ngModel)]="searchQuery" (keyup.enter)="loadUsers()">
+        <button class="btn btn-primary px-3" title="Buscar" (click)="loadUsers()"><i class="bi bi-search"></i></button>
       </div>
     </div>
   </div>
@@ -28,19 +28,23 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="fw-medium">Juan Pérez</td>
-        <td>juan@ejemplo.com</td>
-        <td><span class="badge bg-secondary">User</span></td>
-        <td><span class="badge bg-success">Activo</span></td>
+      <tr *ngFor="let user of users">
+        <td class="fw-medium">{{ user.firstName }} {{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td><span class="badge bg-secondary">{{ user.role }}</span></td>
+        <td>
+          <span class="badge" [ngClass]="user.isActive ? 'bg-success' : 'bg-danger'">
+            {{ user.isActive ? 'Activo' : 'Inactivo' }}
+          </span>
+        </td>
         <td class="text-end">
-          <!-- Toggle para Activar/Desactivar -->
-          <button class="btn btn-sm btn-outline-danger me-2" title="Desactivar">
-            <i class="bi bi-person-fill-slash"></i> Desactivar
+          <button class="btn btn-sm me-2" [ngClass]="user.isActive ? 'btn-outline-danger' : 'btn-outline-success'" (click)="toggleStatus(user)" [title]="user.isActive ? 'Desactivar' : 'Activar'">
+            <i class="bi" [ngClass]="user.isActive ? 'bi-person-fill-slash' : 'bi-person-check-fill'"></i> 
+            {{ user.isActive ? 'Desactivar' : 'Activar' }}
           </button>
         </td>
       </tr>
-      <!-- Más filas estáticas... -->
+      <tr *ngIf="users.length === 0"><td colspan="5" class="text-center text-muted py-4">No se encontraron usuarios.</td></tr>
     </tbody>
   </table>
 </div>

@@ -14,20 +14,14 @@
       </div>
       <table class="table bg-white border rounded">
         <tbody>
-          <tr>
-            <td class="fw-medium">Hardware</td>
+          <tr *ngFor="let cat of categories">
+            <td class="fw-medium">{{ cat.name }}</td>
             <td class="text-end">
               <button class="btn btn-sm btn-outline-secondary me-2"><i class="bi bi-pencil"></i></button>
-              <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              <button class="btn btn-sm btn-outline-danger" (click)="deleteCategory(cat.categoryId)"><i class="bi bi-trash"></i></button>
             </td>
           </tr>
-          <tr>
-            <td class="fw-medium">Periféricos</td>
-            <td class="text-end">
-              <button class="btn btn-sm btn-outline-secondary me-2"><i class="bi bi-pencil"></i></button>
-              <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-            </td>
-          </tr>
+          <tr *ngIf="categories.length === 0"><td colspan="2" class="text-center text-muted">No hay categorías</td></tr>
         </tbody>
       </table>
     </div>
@@ -42,16 +36,17 @@
       </div>
       <table class="table bg-white border rounded">
         <tbody>
-          <tr>
+          <tr *ngFor="let sub of subcategories">
             <td>
-              <span class="fw-medium">Tarjetas Gráficas</span> 
-              <br><small class="text-muted">En: Hardware</small>
+              <span class="fw-medium">{{ sub.name }}</span> 
+              <br><small class="text-muted">En: {{ sub.category?.name || 'Ninguna' }}</small>
             </td>
             <td class="text-end align-middle">
               <button class="btn btn-sm btn-outline-secondary me-2"><i class="bi bi-pencil"></i></button>
-              <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
+              <button class="btn btn-sm btn-outline-danger" (click)="deleteSubcategory(sub.subcategoryId)"><i class="bi bi-trash"></i></button>
             </td>
           </tr>
+          <tr *ngIf="subcategories.length === 0"><td colspan="2" class="text-center text-muted">No hay subcategorías</td></tr>
         </tbody>
       </table>
     </div>

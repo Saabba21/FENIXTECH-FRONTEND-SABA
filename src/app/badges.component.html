@@ -14,17 +14,21 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="fw-medium">TechStore S.A.</td>
+      <tr *ngFor="let company of companies">
+        <td class="fw-medium">{{ company.companyName }}</td>
         <td>
-          <div class="d-flex gap-2">
-            <span class="badge bg-warning text-dark border p-2 d-flex align-items-center">
-              <i class="bi bi-star-fill me-1"></i> Empresa Premium
-              <button class="btn btn-link btn-sm text-danger p-0 ms-2" title="Revocar"><i class="bi bi-x-circle-fill"></i></button>
+          <div class="d-flex flex-wrap gap-2">
+            <span *ngFor="let badge of company.badges" class="badge bg-warning text-dark border p-2 d-flex align-items-center">
+              <i class="bi bi-star-fill me-1"></i> {{ badge.name || 'Insignia' }}
+              <button class="btn btn-link btn-sm text-danger p-0 ms-2" title="Revocar" (click)="revokeBadge(company.companyId, badge.badgeId)">
+                <i class="bi bi-x-circle-fill"></i>
+              </button>
             </span>
+            <span *ngIf="company.badges?.length === 0" class="text-muted small">Sin insignias</span>
           </div>
         </td>
       </tr>
+      <tr *ngIf="companies.length === 0"><td colspan="2" class="text-center text-muted">No hay empresas.</td></tr>
     </tbody>
   </table>
 </div>

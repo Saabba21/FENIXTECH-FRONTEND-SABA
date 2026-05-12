@@ -19,25 +19,48 @@
   </ul>
 
   <div class="tab-content" id="moderationTabsContent">
+    <!-- PRODUCTOS -->
     <div class="tab-pane fade show active" id="productos" role="tabpanel">
       <table class="table bg-white border rounded align-middle">
-        <thead class="table-light">
-          <tr>
-            <th>Producto / Título</th>
-            <th>Autor</th>
-            <th>Fecha</th>
-            <th class="text-end">Acciones</th>
-          </tr>
-        </thead>
+        <thead class="table-light"><tr><th>Título del Producto</th><th>Vendedor (Empresa)</th><th class="text-end">Acciones</th></tr></thead>
         <tbody>
-          <tr>
-            <td class="fw-medium">RTX 3060 Usada</td>
-            <td>usuario123</td>
-            <td>10/10/2023</td>
-            <td class="text-end">
-              <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash-fill"></i> Eliminar</button>
-            </td>
+          <tr *ngFor="let product of products">
+            <td class="fw-medium">{{ product.productTitle }}</td>
+            <td>{{ product.company?.companyName || 'N/A' }}</td>
+            <td class="text-end"><button class="btn btn-sm btn-outline-danger" (click)="deleteProduct(product.productId)"><i class="bi bi-trash-fill"></i> Eliminar</button></td>
           </tr>
+          <tr *ngIf="products.length === 0"><td colspan="3" class="text-center text-muted">No hay productos.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- POSTS -->
+    <div class="tab-pane fade" id="posts" role="tabpanel">
+      <table class="table bg-white border rounded align-middle">
+        <thead class="table-light"><tr><th>Título del Post</th><th>Autor</th><th class="text-end">Acciones</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let post of posts">
+            <td class="fw-medium">{{ post.title }}</td>
+            <td>{{ post.author?.firstName || 'N/A' }}</td>
+            <td class="text-end"><button class="btn btn-sm btn-outline-danger" (click)="deletePost(post.postId)"><i class="bi bi-trash-fill"></i> Eliminar</button></td>
+          </tr>
+          <tr *ngIf="posts.length === 0"><td colspan="3" class="text-center text-muted">No hay posts.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- COMENTARIOS -->
+    <div class="tab-pane fade" id="comentarios" role="tabpanel">
+      <table class="table bg-white border rounded align-middle">
+        <thead class="table-light"><tr><th>Comentario</th><th>Autor</th><th>Pertenece al Post</th><th class="text-end">Acciones</th></tr></thead>
+        <tbody>
+          <tr *ngFor="let comment of comments">
+            <td class="fw-medium text-truncate" style="max-width: 250px;">{{ comment.body }}</td>
+            <td>{{ comment.author?.firstName || 'N/A' }}</td>
+            <td>{{ comment.post?.title || 'N/A' }}</td>
+            <td class="text-end"><button class="btn btn-sm btn-outline-danger" (click)="deleteComment(comment.commentId)"><i class="bi bi-trash-fill"></i> Eliminar</button></td>
+          </tr>
+          <tr *ngIf="comments.length === 0"><td colspan="4" class="text-center text-muted">No hay comentarios.</td></tr>
         </tbody>
       </table>
     </div>
