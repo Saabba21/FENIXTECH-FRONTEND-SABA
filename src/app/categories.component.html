@@ -10,18 +10,32 @@
     <div class="p-4 border rounded shadow-sm bg-light h-100">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h4 class="fw-bold">Categorías</h4>
-        <button class="btn btn-primary btn-sm px-3" title="Añadir Categoría"><i class="bi bi-plus-lg"></i></button>
+        <button class="btn btn-primary btn-sm px-3" title="Añadir Categoría" (click)="openAddCategory()"><i class="bi bi-plus-lg"></i></button>
       </div>
-      <!-- Debug output for categories -->
-      <div class="alert alert-info py-2 px-3 mb-3" style="font-size: 0.85rem;" *ngIf="categories">
-        <strong>Debug:</strong> <pre class="mb-0 mt-1" style="max-height: 100px; overflow: auto;">{{ categories | json }}</pre>
+
+      <!-- Formulario de Categoría -->
+      <div *ngIf="showCategoryForm" class="card mb-3 p-3">
+        <h5>{{ editingCategoryId ? 'Editar Categoría' : 'Nueva Categoría' }}</h5>
+        <div class="mb-2">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="categoryForm.name">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="categoryForm.description">
+        </div>
+        <div class="d-flex gap-2 justify-content-end">
+          <button class="btn btn-sm btn-secondary" (click)="cancelCategoryForm()">Cancelar</button>
+          <button class="btn btn-sm btn-success" (click)="saveCategory()">Guardar</button>
+        </div>
       </div>
+
       <table class="table bg-white border rounded">
         <tbody>
           <tr *ngFor="let cat of categories">
             <td class="fw-medium">{{ cat.name }}</td>
             <td class="text-end">
-              <button class="btn btn-sm btn-outline-secondary me-2"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-outline-secondary me-2" (click)="openEditCategory(cat)"><i class="bi bi-pencil"></i></button>
               <button class="btn btn-sm btn-outline-danger" (click)="deleteCategory(cat.categoryId)"><i class="bi bi-trash"></i></button>
             </td>
           </tr>
@@ -36,12 +50,32 @@
     <div class="p-4 border rounded shadow-sm bg-light h-100">
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h4 class="fw-bold">Subcategorías</h4>
-        <button class="btn btn-primary btn-sm px-3" title="Añadir Subcategoría"><i class="bi bi-plus-lg"></i></button>
+        <button class="btn btn-primary btn-sm px-3" title="Añadir Subcategoría" (click)="openAddSubcategory()"><i class="bi bi-plus-lg"></i></button>
       </div>
-      <!-- Debug output for subcategories -->
-      <div class="alert alert-info py-2 px-3 mb-3" style="font-size: 0.85rem;" *ngIf="subcategories">
-        <strong>Debug:</strong> <pre class="mb-0 mt-1" style="max-height: 100px; overflow: auto;">{{ subcategories | json }}</pre>
+
+      <!-- Formulario de Subcategoría -->
+      <div *ngIf="showSubcategoryForm" class="card mb-3 p-3">
+        <h5>{{ editingSubcategoryId ? 'Editar Subcategoría' : 'Nueva Subcategoría' }}</h5>
+        <div class="mb-2">
+          <label class="form-label">Nombre</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="subcategoryForm.name">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Descripción</label>
+          <input type="text" class="form-control form-control-sm" [(ngModel)]="subcategoryForm.description">
+        </div>
+        <div class="mb-2">
+          <label class="form-label">Categoría Padre</label>
+          <select class="form-select form-select-sm" [(ngModel)]="subcategoryForm.categoryId">
+            <option *ngFor="let c of categories" [value]="c.categoryId">{{ c.name }}</option>
+          </select>
+        </div>
+        <div class="d-flex gap-2 justify-content-end">
+          <button class="btn btn-sm btn-secondary" (click)="cancelSubcategoryForm()">Cancelar</button>
+          <button class="btn btn-sm btn-success" (click)="saveSubcategory()">Guardar</button>
+        </div>
       </div>
+
       <table class="table bg-white border rounded">
         <tbody>
           <tr *ngFor="let sub of subcategories">
@@ -50,7 +84,7 @@
               <br><small class="text-muted">En: {{ sub.category?.name || 'Ninguna' }}</small>
             </td>
             <td class="text-end align-middle">
-              <button class="btn btn-sm btn-outline-secondary me-2"><i class="bi bi-pencil"></i></button>
+              <button class="btn btn-sm btn-outline-secondary me-2" (click)="openEditSubcategory(sub)"><i class="bi bi-pencil"></i></button>
               <button class="btn btn-sm btn-outline-danger" (click)="deleteSubcategory(sub.subcategoryId)"><i class="bi bi-trash"></i></button>
             </td>
           </tr>

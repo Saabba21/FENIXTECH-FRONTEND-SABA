@@ -34,9 +34,23 @@ export class ProposalsComponent implements OnInit {
 
   confirmEdit(proposal: Proposal) {
     if (!proposal.proposalId) return;
-    this.adminService.updateProposalStatus(proposal.proposalId, this.editStatus).subscribe(() => {
-      proposal.status = this.editStatus;
-      this.editingId = null;
+    this.adminService.updateProposalStatus(proposal.proposalId, this.editStatus).subscribe({
+      next: () => {
+        proposal.status = this.editStatus;
+        this.editingId = null;
+        this.cdr.detectChanges();
+      },
+      error: (err) => {
+        console.error('Error updating proposal status', err);
+        // Fallback: If it's a parsing error but it actually succeeded
+        if (err.status === 200) {
+          proposal.status = this.editStatus;
+          this.editingId = null;
+          this.cdr.detectChanges();
+        } else {
+          alert('Error al actualizar la propuesta. Revisa la consola.');
+        }
+      }
     });
   }
 
@@ -44,6 +58,7 @@ export class ProposalsComponent implements OnInit {
     if (!id || !confirm('¿Eliminar esta solicitud de forma definitiva?')) return;
     this.adminService.deleteProposal(id).subscribe(() => {
       this.proposals = this.proposals.filter(p => p.proposalId !== id);
+      this.cdr.detectChanges();
     });
   }
 }
