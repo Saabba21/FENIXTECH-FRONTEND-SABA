@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AdminService } from './assets/admin.service';
@@ -14,10 +14,13 @@ export class ProposalsComponent implements OnInit {
   editingId: number | null = null;
   editStatus: 'OPEN' | 'FULFILLED' = 'OPEN';
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.adminService.getProposals().subscribe(res => this.proposals = res || []);
+    this.adminService.getProposals().subscribe((res: any) => {
+      this.proposals = Array.isArray(res) ? res : (res?.content || res?.data || res?.proposals || []);
+      this.cdr.detectChanges();
+    });
   }
 
   startEdit(proposal: Proposal) {

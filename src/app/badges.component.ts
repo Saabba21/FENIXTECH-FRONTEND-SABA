@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminService } from './assets/admin.service';
 import { CompanyWithBadgesDTO } from './assets/interfaces';
@@ -11,14 +11,17 @@ import { CompanyWithBadgesDTO } from './assets/interfaces';
 export class BadgesComponent implements OnInit {
   companies: CompanyWithBadgesDTO[] = [];
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.loadCompanies();
   }
 
   loadCompanies() {
-    this.adminService.getCompaniesWithBadges().subscribe(res => this.companies = res || []);
+    this.adminService.getCompaniesWithBadges().subscribe((res: any) => {
+      this.companies = Array.isArray(res) ? res : (res?.content || res?.data || res?.companies || []);
+      this.cdr.detectChanges();
+    });
   }
 
   revokeBadge(companyId?: number, badgeId?: number) {

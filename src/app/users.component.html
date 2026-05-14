@@ -16,6 +16,11 @@
   </div>
 </div>
 
+<!-- Debug output as requested to check real data structure -->
+<div class="alert alert-info mb-4" *ngIf="users">
+  <strong>Debug JSON:</strong> <pre class="mb-0 mt-2" style="max-height: 150px; overflow: auto;">{{ users | json }}</pre>
+</div>
+
 <div class="table-responsive bg-white border rounded shadow-sm p-3">
   <table class="table table-hover align-middle">
     <thead class="table-light">

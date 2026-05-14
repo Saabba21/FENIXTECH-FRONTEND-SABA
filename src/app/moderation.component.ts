@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminService } from './assets/admin.service';
 import { Product, Post, Comment } from './assets/interfaces';
@@ -13,12 +13,21 @@ export class ModerationComponent implements OnInit {
   posts: Post[] = [];
   comments: Comment[] = [];
 
-  constructor(private adminService: AdminService) {}
+  constructor(private adminService: AdminService, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
-    this.adminService.getProducts().subscribe(res => this.products = res || []);
-    this.adminService.getPosts().subscribe(res => this.posts = res || []);
-    this.adminService.getComments().subscribe(res => this.comments = res || []);
+    this.adminService.getProducts().subscribe((res: any) => {
+      this.products = Array.isArray(res) ? res : (res?.content || res?.data || res?.products || []);
+      this.cdr.detectChanges();
+    });
+    this.adminService.getPosts().subscribe((res: any) => {
+      this.posts = Array.isArray(res) ? res : (res?.content || res?.data || res?.posts || []);
+      this.cdr.detectChanges();
+    });
+    this.adminService.getComments().subscribe((res: any) => {
+      this.comments = Array.isArray(res) ? res : (res?.content || res?.data || res?.comments || []);
+      this.cdr.detectChanges();
+    });
   }
 
   deleteProduct(id?: number) {

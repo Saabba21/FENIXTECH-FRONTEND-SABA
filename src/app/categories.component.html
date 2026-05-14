@@ -12,6 +12,10 @@
         <h4 class="fw-bold">Categorías</h4>
         <button class="btn btn-primary btn-sm px-3" title="Añadir Categoría"><i class="bi bi-plus-lg"></i></button>
       </div>
+      <!-- Debug output for categories -->
+      <div class="alert alert-info py-2 px-3 mb-3" style="font-size: 0.85rem;" *ngIf="categories">
+        <strong>Debug:</strong> <pre class="mb-0 mt-1" style="max-height: 100px; overflow: auto;">{{ categories | json }}</pre>
+      </div>
       <table class="table bg-white border rounded">
         <tbody>
           <tr *ngFor="let cat of categories">
@@ -33,6 +37,10 @@
       <div class="d-flex justify-content-between align-items-center mb-3">
         <h4 class="fw-bold">Subcategorías</h4>
         <button class="btn btn-primary btn-sm px-3" title="Añadir Subcategoría"><i class="bi bi-plus-lg"></i></button>
+      </div>
+      <!-- Debug output for subcategories -->
+      <div class="alert alert-info py-2 px-3 mb-3" style="font-size: 0.85rem;" *ngIf="subcategories">
+        <strong>Debug:</strong> <pre class="mb-0 mt-1" style="max-height: 100px; overflow: auto;">{{ subcategories | json }}</pre>
       </div>
       <table class="table bg-white border rounded">
         <tbody>
