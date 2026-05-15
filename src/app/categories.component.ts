@@ -112,8 +112,14 @@ export class CategoriesComponent implements OnInit {
   }
 
   saveSubcategory() {
+    const payload = {
+      name: this.subcategoryForm.name,
+      description: this.subcategoryForm.description,
+      categoryId: Number(this.subcategoryForm.categoryId)
+    };
+
     if (this.editingSubcategoryId) {
-      this.adminService.updateSubcategory(this.editingSubcategoryId, this.subcategoryForm).subscribe({
+      this.adminService.updateSubcategory(this.editingSubcategoryId, payload).subscribe({
         next: () => {
           this.loadData();
           this.cancelSubcategoryForm();
@@ -121,7 +127,7 @@ export class CategoriesComponent implements OnInit {
         error: err => console.error('Error updating subcategory', err)
       });
     } else {
-      this.adminService.createSubcategory(this.subcategoryForm).subscribe({
+      this.adminService.createSubcategory(payload).subscribe({
         next: () => {
           this.loadData();
           this.cancelSubcategoryForm();

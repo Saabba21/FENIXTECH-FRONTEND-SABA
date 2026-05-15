@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -14,7 +14,7 @@ export class LoginComponent {
   password = '';
   errorMessage = '';
 
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, private authService: AuthService, private cdr: ChangeDetectorRef) {}
 
   onLogin(event: Event) {
     event.preventDefault();
@@ -26,11 +26,13 @@ export class LoginComponent {
           this.router.navigate(['/dashboard']);
         } else {
           this.errorMessage = 'Credenciales inválidas o la API no devolvió el Token.';
+          this.cdr.detectChanges();
         }
       },
       error: (err) => {
         console.error('Error de autenticación', err);
         this.errorMessage = 'Credenciales inválidas o error en el servidor.';
+        this.cdr.detectChanges();
       }
     });
   }

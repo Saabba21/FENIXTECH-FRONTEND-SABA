@@ -13,6 +13,7 @@ export class ProposalsComponent implements OnInit {
   proposals: Proposal[] = [];
   editingId: number | null = null;
   editStatus: 'OPEN' | 'FULFILLED' = 'OPEN';
+  errorMessage = '';
 
   constructor(private adminService: AdminService, private cdr: ChangeDetectorRef) {}
 
@@ -26,14 +27,17 @@ export class ProposalsComponent implements OnInit {
   startEdit(proposal: Proposal) {
     this.editingId = proposal.proposalId || null;
     this.editStatus = proposal.status;
+    this.errorMessage = '';
   }
 
   cancelEdit() {
     this.editingId = null;
+    this.errorMessage = '';
   }
 
   confirmEdit(proposal: Proposal) {
     if (!proposal.proposalId) return;
+    this.errorMessage = '';
     this.adminService.updateProposalStatus(proposal.proposalId, this.editStatus).subscribe({
       next: () => {
         proposal.status = this.editStatus;
@@ -48,7 +52,8 @@ export class ProposalsComponent implements OnInit {
           this.editingId = null;
           this.cdr.detectChanges();
         } else {
-          alert('Error al actualizar la propuesta. Revisa la consola.');
+          this.errorMessage = 'Error al actualizar la propuesta. Revisa la consola.';
+          this.cdr.detectChanges();
         }
       }
     });
